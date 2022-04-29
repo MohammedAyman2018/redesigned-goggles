@@ -15,16 +15,16 @@ jobs:
       - run:
           name: Install UI dependencies 
           command: |
-            cd "./reactnd-contacts-complete"; npm install; cd ..;
+            cd "./reactnd-contacts-complete"; npm install;
       - run:
           name: Build UI 
           command: |
-            cd "./reactnd-contacts-complete"; npm run build; cd ..;
+            cd "./reactnd-contacts-complete"; npm run build;
       - run:
           name: Install Server dependencies 
           command: |
-            cd "./reactnd-contacts-server"; npm install; cd ..;
+            cd "./reactnd-contacts-server"; npm install;
       - run:
           name: Build Server 
           command: |
-            cd "./reactnd-contacts-server"; npm run build; cd ..;
+            cd "./reactnd-contacts-server"; npm run build;
