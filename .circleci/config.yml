@@ -13,18 +13,18 @@ jobs:
       - checkout
       # install dependencies in both apps
       - run:
-          name: Install UI dependencies 
-          command: |
-            cd "./reactnd-contacts-complete"; npm install;
+        name: Front-End Install
+        command: |
+          npm run frontend:install
       - run:
-          name: Build UI 
-          command: |
-            cd "./reactnd-contacts-complete"; npm run build;
+        name: Back-End Install
+        command: |
+          npm run backend:install
       - run:
-          name: Install Server dependencies 
-          command: |
-            cd "./reactnd-contacts-server"; npm install;
+        name: Front-End Build
+        command: |
+          npm run frontend:build
       - run:
-          name: Build Server 
-          command: |
-            cd "./reactnd-contacts-server"; npm run build;
+        name: Back-End Build
+        command: |
+          npm run backend:build
