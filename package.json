@@ -1,8 +1,9 @@
 {
     "scripts": {
-        "frontend:install": "cd reactnd-contacts-complete && pwd && npm install",
-        "backend:install": "cd reactnd-contacts-server && pwd && npm install",
-        "frontend:build": "cd reactnd-contacts-complete && pwd && npm run build",
-        "backend:build": "cd reactnd-contacts-server && pwd && npm run build"
+        "frontend:install": "cd reactnd-contacts-complete && npm install",
+        "backend:install": "cd reactnd-contacts-server && npm install",
+        "frontend:build": "cd reactnd-contacts-complete && npm run build",
+        "backend:build": "cd reactnd-contacts-server && npm run build",
+        "frontend:deploy": "cd reactnd-contacts-complete && aws s3 cp --recursive --acl public-read ./build s3://test-ewq"
     }
 }
