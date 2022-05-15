@@ -2,23 +2,8 @@ version: 2.1
 orbs:
   # orgs contain basc recipes and reproducible actions (install node, aws, etc.)
   node: circleci/node@5.0.2
-  aws-cli: circleci/aws-cli@3.1.1
   # different jobs are calles later in the workflows sections
 jobs:
-  configure-role-arn:
-    executor: aws-cli/default
-    steps:
-      - checkout
-      - aws-cli/setup:
-          profile-name: default
-      - aws-cli/role-arn-setup:
-          profile-name: new-profile
-          role-arn: "arn:aws:iam::771249635977:user/cli-user"
-          source-profile: default
-      - run: >-
-          aws sts user --role-arn
-          "arn:aws:iam::771249635977:user/cli-user" --role-session-name
-          AWSCLI-Session
   build:
     docker:
       # the base image can run most needed actions with orbs
@@ -26,6 +11,12 @@ jobs:
     steps:
       - node/install
       - checkout
+      - run:
+          name: Install AWS CLI
+          command: |
+            sudo apt-get update
+            sudo apt install python3-pip
+            sudo pip3 install awsebcli --updagrade
       # install dependencies in both apps
       - run:
           name: Front End Install
